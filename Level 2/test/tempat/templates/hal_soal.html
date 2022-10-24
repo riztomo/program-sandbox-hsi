@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SIMULASI EVALUASI HSI</title>
+        <style>
+            body {
+                padding-left: 15px;
+            }
+
+            .title {
+                padding-bottom: 15px;
+            }
+
+            header {
+                padding-bottom: 20px;
+            }
+
+            .submit_answer {
+                padding-top: 15px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <h2 class="title">SIMULASI EVALUASI HSI</h2>
+            <p>Terdapat empat pilihan jawaban dari dua soal.</p>
+            <p>Klik bulatan pada jawaban yang menurut Anda benar.</p>
+        </header>
+        <div class="soal">
+            <div class="container">
+                <div class="soal1">
+                    <p>Soal pertama: {{ soalpertama }}</p>
+                    <input type="radio" id="satu1" name="jawabpertama" value="0">
+                    <label for="0">{{jwbpertama1}}</label><br>
+                    <input type="radio" id="satu2" name="jawabpertama" value="1">
+                    <label for="1">{{jwbpertama2}}</label><br>
+                    <input type="radio" id="satu3" name="jawabpertama" value="2">
+                    <label for="2">{{jwbpertama3}}</label><br>
+                    <input type="radio" id="satu4" name="jawabpertama" value="3">
+                    <label for="3">{{jwbpertama4}}</label>
+                </div>
+                <div class="soal2">
+                    <p>Soal kedua: {{ soalkedua }}</p>
+                    <input type="radio" id="dua1" name="jawabkedua" value="0">
+                    <label for="0">{{jwbkedua1}}</label><br>
+                    <input type="radio" id="dua2" name="jawabkedua" value="1">
+                    <label for="1">{{jwbkedua2}}</label><br>
+                    <input type="radio" id="dua3" name="jawabkedua" value="2">
+                    <label for="2">{{jwbkedua3}}</label><br>
+                    <input type="radio" id="dua4" name="jawabkedua" value="3">
+                    <label for="3">{{jwbkedua4}}</label>
+                </div>
+                <div class="submit_answer">
+                    <button type="button" onclick="display()">Submit</button>
+
+                    <p id="demo"></p>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            function display() {
+                let right = 0;
+                let wrong = 0;
+
+                if (document.getElementById('satu1').checked && document.getElementById('satu1').value === "{{jwbpertama}}") {
+                    right += 1;
+                }
+                else if (document.getElementById('satu2').checked && document.getElementById('satu2').value === "{{jwbpertama}}") {
+                    right += 1;
+                }
+                else if (document.getElementById('satu3').checked && document.getElementById('satu3').value === "{{jwbpertama}}") {
+                    right += 1;
+                }
+                else if (document.getElementById('satu4').checked && document.getElementById('satu4').value === "{{jwbpertama}}") {
+                    right += 1;
+                }
+                else {
+                    wrong += 1;
+                }
+
+                if (document.getElementById('dua1').checked && document.getElementById('dua1').value === "{{jwbkedua}}") {
+                    right += 1;
+                }
+                else if (document.getElementById('dua2').checked && document.getElementById('dua2').value === "{{jwbkedua}}") {
+                    right += 1;
+                }
+                else if (document.getElementById('dua3').checked && document.getElementById('dua3').value === "{{jwbkedua}}") {
+                    right += 1;
+                }
+                else if (document.getElementById('dua4').checked && document.getElementById('dua4').value === "{{jwbkedua}}") {
+                    right += 1;
+                }
+                else {
+                    wrong += 1;
+                }
+
+                document.getElementById("demo").innerHTML = `Jumlah jawaban yang benar adalah ${right}, dan jumlah jawaban yang salah adalah ${wrong}`;
+            }
+
+        </script>
+    </body>
+</html>
