@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laman Evaluasi HSI - Error</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <style>
+        body {
+            padding-left: 3%;
+            padding-top: 3%;
+        }
+
+        h1 {
+            padding-bottom: 1%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="title">Laman Evaluasi HSI</h1>
+        <img src={% static "HSI.png" %} alt="HSI Logo" width="128" height="128">
+        <p></p> &nbsp;
+    </header>
+    <div class="main">
+        <h2>Tidak cukup pertanyaan.</h2>
+        <br>
+        <a href="..">Kembali ke laman utama</a>
+    </div>
+</body>
+
+</html>

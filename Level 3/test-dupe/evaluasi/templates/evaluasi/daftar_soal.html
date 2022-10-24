@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daftar Soal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <style>
+        body {
+            padding-left: 3%;
+            padding-top: 3%;
+        }
+
+        .title {
+            padding-bottom: 1%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="title">Laman Evaluasi HSI</h1>
+        <img src="{% static '/HSI.png' %}" alt="HSI Logo" width="128" height="128">
+        <p></p> &nbsp;
+        <h2>Daftar Soal</h2>
+    </header>
+    <div>
+        <form method="POST">
+            {%csrf_token%}
+            <p></p> &nbsp;
+            <p></p> &nbsp;
+            {% for satuPertanyaan in pertanyaan %}
+            <p>{{satuPertanyaan.question}}</p> <p></p>
+            <p>1. {{satuPertanyaan.option_one}}</p> <p></p>
+            <p>2. {{satuPertanyaan.option_two}}</p> <p></p>
+            <p>3. {{satuPertanyaan.option_three}}</p> <p></p>
+            <p>4. {{satuPertanyaan.option_four}}</p> <p></p>
+            <p>Ans: {{satuPertanyaan.ans}}</p> <p></p>
+            <a href="../ubah-soal/{{satuPertanyaan.id}}">Ubah</a>
+            <p></p> &nbsp;
+            {% endfor %}
+        </form>
+    </div>
+    <div>
+        <a href="..">Kembali ke laman utama</a>
+    </div>
+    
+</body>
+
+</html>

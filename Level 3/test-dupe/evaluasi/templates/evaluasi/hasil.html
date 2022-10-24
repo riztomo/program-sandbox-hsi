@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hasil Evaluasi</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <style>
+        body {
+            padding-left: 3%;
+            padding-top: 3%;
+        }
+
+        .title {
+            padding-bottom: 1%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="title">Laman Evaluasi HSI</h1>
+        <img src="{% static '/HSI.png' %}" alt="HSI Logo" width="128" height="128">
+        <p></p> &nbsp;
+        <h2>Hasil Evaluasi</h2>
+    </header>
+    <div>
+        <p></p> &nbsp;
+        <p></p> &nbsp;
+        {% for satuHasil in hasil %}
+        <p>Nama peserta: {{satuHasil.Name}}</p> <p></p> &nbsp;
+        <p>Pertanyaan 1: {{satuHasil.question1}}</p> <p></p>
+        <p>1. {{satuHasil.option_one1}}</p> <p></p>
+        <p>2. {{satuHasil.option_two1}}</p> <p></p>
+        <p>3. {{satuHasil.option_three1}}</p> <p></p>
+        <p>4. {{satuHasil.option_four1}}</p> <p></p>
+        <p>Jawaban Peserta: {{satuHasil.yourAnswer1}}</p> <p></p>
+        <p>Jawaban Asli: {{satuHasil.ans1}}</p> <p></p>
+        <p></p> &nbsp;
+        <p>Pertanyaan 2: {{satuHasil.question2}}</p> <p></p>
+        <p>1. {{satuHasil.option_one2}}</p> <p></p>
+        <p>2. {{satuHasil.option_two2}}</p> <p></p>
+        <p>3. {{satuHasil.option_three2}}</p> <p></p>
+        <p>4. {{satuHasil.option_four2}}</p> <p></p>
+        <p>Jawaban Peserta: {{satuHasil.yourAnswer2}}</p> <p></p>
+        <p>Jawaban Asli: {{satuHasil.ans2}}</p> <p></p>
+        <p></p> &nbsp;
+        <p></p> &nbsp;
+        {% endfor %}
+    </div>
+</body>
+
+</html>
