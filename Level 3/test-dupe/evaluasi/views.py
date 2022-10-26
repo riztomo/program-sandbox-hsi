@@ -3,7 +3,6 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.urls import is_valid_path
 from .models import Questions, Answer
-from .forms import CreateQuestion, InsertName
 import random
 
 # Create your views here.
@@ -78,15 +77,24 @@ def hasil(request):
     return render(request, 'evaluasi/hasil.html', context)
 
 def tambah(request):
+    question = Questions()
     if request.method == 'POST':
-        createQuestions = CreateQuestion(request.POST)
-        if createQuestions.is_valid():
-            createQuestions.save()
-            return redirect('/admin/daftar-soal')
+        
+        question.question = request.POST['question']
+        question.option_one = request.POST['option1']
+        question.option_two = request.POST['option2']
+        question.option_three = request.POST['option3']
+        question.option_four = request.POST['option4']
+        answer = request.POST['answer']
+        if answer == 'option_one': question.ans = question.option_one
+        elif answer == 'option_two': question.ans = question.option_two
+        elif answer == 'option_three': question.ans = question.option_three
+        elif answer == 'option_four': question.ans = question.option_four
+        question.save()
+        return redirect('/admin/daftar-soal')
     else:
-        createQuestions = CreateQuestion()
-    context = {'form' : createQuestions}
-    return render(request, 'evaluasi/tambah_soal.html', context)
+        question = Questions()
+    return render(request, 'evaluasi/tambah_soal.html')
 
 def ubah(request, id):
     soalDiubah = Questions.objects.get(id=id)
@@ -96,8 +104,11 @@ def ubah(request, id):
         soalDiubah.option_two = request.POST['option2']
         soalDiubah.option_three = request.POST['option3']
         soalDiubah.option_four = request.POST['option4']
-        soalDiubah.ans = request.POST['ans']
-
+        answer = request.POST['answer']
+        if answer == 'option_one': soalDiubah.ans = soalDiubah.option_one
+        elif answer == 'option_two': soalDiubah.ans = soalDiubah.option_two
+        elif answer == 'option_three': soalDiubah.ans = soalDiubah.option_three
+        elif answer == 'option_four': soalDiubah.ans = soalDiubah.option_four
         soalDiubah.save()
         
         return redirect('/admin/daftar-soal')
